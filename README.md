@@ -4,10 +4,10 @@
 
 ## 在线部署
 
-这个项目可以直接部署到 GitHub Pages。当前仓库名是 `LX_plant_vs_zombie`，生产构建的静态资源路径已经在 `vite.config.ts` 中配置为：
+这个项目可以直接部署到 GitHub Pages。当前仓库名是 `LX_plant_vs_zombie`，生产构建时会通过 `package.json` 中的 `build` 脚本设置静态资源路径：
 
-```ts
-base: '/LX_plant_vs_zombie/'
+```bash
+vite build --base=/LX_plant_vs_zombie/
 ```
 
 推送到 `main` 后，GitHub Actions 会自动构建并发布 `dist` 到 GitHub Pages。
