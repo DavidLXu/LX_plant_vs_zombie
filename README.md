@@ -6,11 +6,9 @@
 
 这个项目可以直接部署到 GitHub Pages。当前仓库名是 `LX_plant_vs_zombie`，生产构建时会通过 `package.json` 中的 `build` 脚本设置静态资源路径：
 
-```bash
-vite build --base=/LX_plant_vs_zombie/
-```
+这个路径由 `scripts/build.mjs` 传给 Vite。
 
-推送到 `main` 后，GitHub Actions 会自动构建并发布 `dist` 到 GitHub Pages。
+推送到 `main` 后，GitHub Actions 会自动构建 `dist`，并把静态文件发布到 `gh-pages` 分支。
 
 部署完成后，页面地址通常是：
 
@@ -18,7 +16,14 @@ vite build --base=/LX_plant_vs_zombie/
 https://davidlxu.github.io/LX_plant_vs_zombie/
 ```
 
-如果第一次使用 GitHub Pages，需要在仓库的 `Settings -> Pages` 中确认 Source 选择 `GitHub Actions`。
+如果第一次使用 GitHub Pages，需要在仓库中做一次设置：
+
+1. 打开 `Settings -> Pages`。
+2. 在 `Build and deployment` 里把 Source 设为 `Deploy from a branch`。
+3. Branch 选择 `gh-pages`，目录选择 `/ (root)`。
+4. 保存后等待 GitHub Pages 完成发布。
+
+这个项目不使用 GitHub Pages 的 Actions API 创建站点，因此不会触发 `Resource not accessible by integration` 这类首次启用权限错误。
 
 ## 本地运行
 
